@@ -14,7 +14,7 @@ class DatamahasiswaControllers extends Controller
      */
     public function index()
     {
-        return "Halaman Index Datamahasiswa";
+        return view('layouts.app');
     }
 
     /**
