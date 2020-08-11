@@ -21,3 +21,4 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('mhs', 'datamahasiswaControllers@index');
+Route::get('/mhs_list', 'datamahasiswaControllers@mhs_list')->name('mhs_list');

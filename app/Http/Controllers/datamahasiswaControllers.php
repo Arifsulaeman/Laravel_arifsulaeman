@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Datamahasiswa;
+use DataTables;
 use Illuminate\Http\Request;
+//use Yajra\DataTables\Facades\DataTables;
 
 class DatamahasiswaControllers extends Controller
 {
@@ -14,7 +16,7 @@ class DatamahasiswaControllers extends Controller
      */
     public function index()
     {
-        return view('layouts.app');
+        return view('mahasiswa.index');
     }
 
     /**
@@ -22,9 +24,9 @@ class DatamahasiswaControllers extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function mhs_list()
     {
-        //
+        return Datatables::of(datamahasiswa::all())->make(true);
     }
 
     /**

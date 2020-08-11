@@ -1,20 +1,23 @@
 @extends('layouts.app')
 
-@section("title",'Halaman mahasiswa')
-@section("bread1",'mahasiswa')
+@section("title",'Halaman dosen')
+@section("bread1",'dosen')
 @section("bread2",'daftar')
 
 @section('content')
-<h2> Daftar Mahasiswa </h2>
+<h2> Daftar Dosen </h2>
+<p><a href="/dosen/create" class="btn btn-success btn-sm">Tambah</a></p>
 @include('layouts.alert')
 
-<table class="table table-striped" id="mhs-table">
+<table class="table table-striped" id="dosen-table">
      <thead>
           <tr>
-               <th>No</th>
-               <th>NIM</th>
-               <th>Nama Lengkap</th>
-               <th>Prodi</th>
+               <th>nomor</th>
+               <th>kode dosen</th>
+               <th>nama dosen</th>
+               <th>Nidn</th>
+               <th>email</th>
+               <th>handphone</th>
                <th>Alamat</th>
                <th>Pilihan</th>
           </tr>
@@ -24,25 +27,33 @@
 
 <script>
      $(function() {
-          $('#mhs-table').DataTable({
+          $('#dosen-table').DataTable({
                processing: true,
                serverSide: true,
-               ajax: "{{ route('mhs_list') }}",
+               ajax: "{{ route('dosen_list') }}",
                columns: [{
                          data: 'DT_RowIndex',
                          name: 'DT_RowIndex'
                     },
                     {
-                         data: 'nim',
-                         name: 'nim'
+                         data: 'kode_dosen',
+                         name: 'kode_dosen'
                     },
                     {
-                         data: 'nama_lengkap',
-                         name: 'nama_lengkap'
+                         data: 'nama_dosen',
+                         name: 'nama_dosen'
                     },
                     {
-                         data: 'prodi.nama_prodi',
-                         name: 'nama_prodi'
+                         data: 'nidn',
+                         name: 'nidn'
+                    },
+                    {
+                         data: 'email',
+                         name: 'email'
+                    },
+                    {
+                         data: 'handphone',
+                         name: 'handphone'
                     },
                     {
                          data: 'alamat',
@@ -55,8 +66,6 @@
                          searchable: false
                     }
                ]
-
-
           });
 
      });
