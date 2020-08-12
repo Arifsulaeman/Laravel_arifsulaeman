@@ -16,7 +16,7 @@ class DatamahasiswaControllers extends Controller
      */
     public function index()
     {
-        return view('mahasiswa.index');
+        return view('layouts.index');
     }
 
     /**
@@ -27,6 +27,15 @@ class DatamahasiswaControllers extends Controller
     public function mhs_list()
     {
         return Datatables::of(datamahasiswa::all())->make(true);
+        $mhs = Mahasiswa::with('prodi')->get();
+        return Datatables::of($mhs)
+            ->addIndexColumn()
+            ->addColumn('action', function ($mhs) {
+                $action = '<a class="text-primary"href="/mhs/edit/' . $mhs->nim . '">Edit</a>';
+                $action .= ' | <a class="text-danger"href="/mhs/delete/' . $mhs->nim . '">Hapus</a>';
+                return $action;
+            })
+            ->make();
     }
 
     /**

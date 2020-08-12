@@ -6,6 +6,7 @@
 
 @section('content')
 <h2> Daftar Mahasiswa </h2>
+<p><a href="/mhs/create" class="btn btn-success btn-sm">Tambah</a></p>
 @include('layouts.alert')
 
 <table class="table table-striped" id="mhs-table">
